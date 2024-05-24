@@ -5,17 +5,17 @@ import (
 	"reflect"
 )
 
-func convertJSONObject2Map(res map[string]interface{}, js *JSONObject) map[string]interface{} {
+func convertJSONObject2Map(res map[string]interface{}, js JSONObject) map[string]interface{} {
 	jsonMap := js.jsonMap
 	for key, value := range jsonMap {
 		fmt.Printf("Key: %s, Value: %v\n", key, value)
 		ifaceType := reflect.ValueOf(value).Type()
 		if ifaceType == reflect.TypeOf(JSONObject{}) {
 			jm := make(map[string]interface{})
-			res[key] = convertJSONObject2Map(jm, value.(*JSONObject))
+			res[key] = convertJSONObject2Map(jm, value.(JSONObject))
 		} else if ifaceType == reflect.TypeOf(JSONArray{}) {
 			sliceOfMaps := make([]interface{}, 0)
-			res[key] = convertJSONArray2Map(sliceOfMaps, value.(*JSONArray))
+			res[key] = convertJSONArray2Map(sliceOfMaps, value.(JSONArray))
 		} else {
 			res[key] = value
 		}
@@ -23,7 +23,7 @@ func convertJSONObject2Map(res map[string]interface{}, js *JSONObject) map[strin
 	return res
 }
 
-func convertJSONArray2Map(list []interface{}, array *JSONArray) []interface{} {
+func convertJSONArray2Map(list []interface{}, array JSONArray) []interface{} {
 	if array == nil {
 		return list
 	}
@@ -32,10 +32,10 @@ func convertJSONArray2Map(list []interface{}, array *JSONArray) []interface{} {
 		ifaceType := reflect.ValueOf(js).Type()
 		if ifaceType == reflect.TypeOf(JSONObject{}) {
 			jm := make(map[string]interface{})
-			list = append(list, convertJSONObject2Map(jm, js.(*JSONObject)))
+			list = append(list, convertJSONObject2Map(jm, js.(JSONObject)))
 		} else if ifaceType == reflect.TypeOf(JSONArray{}) {
 			sliceOfMaps := make([]interface{}, 0)
-			mp := convertJSONArray2Map(sliceOfMaps, js.(*JSONArray))
+			mp := convertJSONArray2Map(sliceOfMaps, js.(JSONArray))
 			list = append(list, mp)
 		} else {
 			list = append(list, js)

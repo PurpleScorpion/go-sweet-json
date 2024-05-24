@@ -22,7 +22,9 @@ func (jr *JSONArray) FluentPut(value interface{}) *JSONArray {
 
 func (jr *JSONArray) GetData() []interface{} {
 	sliceOfMaps := make([]interface{}, 0)
-	return convertJSONArray2Map(sliceOfMaps, jr)
+	arr := NewJSONArray()
+	arr.jsonArray = jr.jsonArray
+	return convertJSONArray2Map(sliceOfMaps, arr)
 }
 
 func (jr *JSONArray) ToJsonString() string {

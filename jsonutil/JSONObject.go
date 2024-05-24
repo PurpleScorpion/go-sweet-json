@@ -14,7 +14,9 @@ func NewJSONObject() JSONObject {
 
 func (js *JSONObject) GetData() map[string]interface{} {
 	res := make(map[string]interface{})
-	return convertJSONObject2Map(res, js)
+	obj := NewJSONObject()
+	obj.jsonMap = js.jsonMap
+	return convertJSONObject2Map(res, obj)
 }
 
 func (js *JSONObject) ParseObject(str string) *JSONObject {
