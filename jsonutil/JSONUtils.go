@@ -24,7 +24,7 @@ func convertJSONObject2Map(res map[string]interface{}, js JSONObject) map[string
 }
 
 func convertJSONArray2Map(list []interface{}, array JSONArray) []interface{} {
-	if array == nil {
+	if array.Size() == 0 {
 		return list
 	}
 	for i := 0; i < len(array.jsonArray); i++ {
