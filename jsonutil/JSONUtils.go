@@ -1,14 +1,12 @@
 package jsonutil
 
 import (
-	"fmt"
 	"reflect"
 )
 
 func convertJSONObject2Map(res map[string]interface{}, js JSONObject) map[string]interface{} {
 	jsonMap := js.jsonMap
 	for key, value := range jsonMap {
-		fmt.Printf("Key: %s, Value: %v\n", key, value)
 		ifaceType := reflect.ValueOf(value).Type()
 		if ifaceType == reflect.TypeOf(JSONObject{}) {
 			jm := make(map[string]interface{})

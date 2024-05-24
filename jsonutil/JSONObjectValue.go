@@ -260,7 +260,7 @@ func (js *JSONObject) GetJSONArray(key string) JSONArray {
 
 func (jr *JSONArray) GetJSONObject(index int32) JSONObject {
 	if index < 0 || index >= jr.Size() {
-		panic("The index is out of range")
+		panic(fmt.Sprintf("The index is out of range: %d", index))
 	}
 	obj := jr.jsonArray[index]
 	if isSlice(obj) {
@@ -286,7 +286,7 @@ func (jr *JSONArray) GetJSONObject(index int32) JSONObject {
 
 func (jr *JSONArray) GetJSONArray(index int32) JSONArray {
 	if index < 0 || index >= jr.Size() {
-		panic("The index is out of range")
+		panic(fmt.Sprintf("The index is out of range: %d", index))
 	}
 	obj := jr.jsonArray[index]
 	arr := NewJSONArray()
@@ -306,4 +306,194 @@ func (jr *JSONArray) GetJSONArray(index int32) JSONArray {
 	val := obj.([]interface{})
 	arr.jsonArray = val
 	return arr
+}
+
+func (jr *JSONArray) GetTime(index int32) time.Time {
+	if index < 0 || index >= jr.Size() {
+		panic(fmt.Sprintf("The index is out of range: %d", index))
+	}
+	value := jr.jsonArray[index]
+	switch t := value.(type) {
+	case time.Time:
+		val := value.(time.Time)
+		return val
+	default:
+		panic(fmt.Sprintf("The value is of an unknown type: %T\n", t))
+	}
+}
+
+func (jr *JSONArray) GetString(index int32) string {
+	if index < 0 || index >= jr.Size() {
+		panic(fmt.Sprintf("The index is out of range: %d", index))
+	}
+	value := jr.jsonArray[index]
+	switch t := value.(type) {
+	case string:
+		val := value.(string)
+		return val
+	default:
+		panic(fmt.Sprintf("The value is of an unknown type: %T\n", t))
+	}
+}
+
+func (jr *JSONArray) GetInt(index int32) int {
+	if index < 0 || index >= jr.Size() {
+		panic(fmt.Sprintf("The index is out of range: %d", index))
+	}
+	value := jr.jsonArray[index]
+	switch t := value.(type) {
+	case int:
+		val := value.(int)
+		return val
+	case int16:
+		val := value.(int16)
+		return int(val)
+	case int32:
+		val := value.(int32)
+		return int(val)
+	case int64:
+		val := value.(int64)
+		return int(val)
+	default:
+		panic(fmt.Sprintf("The value is of an unknown type: %T\n", t))
+	}
+}
+
+func (jr *JSONArray) GetInt16(index int32) int16 {
+	if index < 0 || index >= jr.Size() {
+		panic(fmt.Sprintf("The index is out of range: %d", index))
+	}
+	value := jr.jsonArray[index]
+	switch t := value.(type) {
+	case int:
+		val := value.(int)
+		return int16(val)
+	case int16:
+		val := value.(int16)
+		return int16(val)
+	case int32:
+		val := value.(int32)
+		return int16(val)
+	case int64:
+		val := value.(int64)
+		return int16(val)
+	default:
+		panic(fmt.Sprintf("The value is of an unknown type: %T\n", t))
+	}
+}
+
+func (jr *JSONArray) GetInt32(index int32) int32 {
+	if index < 0 || index >= jr.Size() {
+		panic(fmt.Sprintf("The index is out of range: %d", index))
+	}
+	value := jr.jsonArray[index]
+	switch t := value.(type) {
+	case int:
+		val := value.(int)
+		return int32(val)
+	case int16:
+		val := value.(int16)
+		return int32(val)
+	case int32:
+		val := value.(int32)
+		return int32(val)
+	case int64:
+		val := value.(int64)
+		return int32(val)
+	default:
+		panic(fmt.Sprintf("The value is of an unknown type: %T\n", t))
+	}
+}
+
+func (jr *JSONArray) GetInt64(index int32) int64 {
+	if index < 0 || index >= jr.Size() {
+		panic(fmt.Sprintf("The index is out of range: %d", index))
+	}
+	value := jr.jsonArray[index]
+
+	switch t := value.(type) {
+	case int:
+		val := value.(int)
+		return int64(val)
+	case int16:
+		val := value.(int16)
+		return int64(val)
+	case int32:
+		val := value.(int32)
+		return int64(val)
+	case int64:
+		return value.(int64)
+	default:
+		panic(fmt.Sprintf("The value is of an unknown type: %T\n", t))
+	}
+}
+
+func (jr *JSONArray) GetFloat32(index int32) float32 {
+	if index < 0 || index >= jr.Size() {
+		panic(fmt.Sprintf("The index is out of range: %d", index))
+	}
+	value := jr.jsonArray[index]
+	switch t := value.(type) {
+	case int:
+		val := value.(int)
+		return float32(val)
+	case int16:
+		val := value.(int16)
+		return float32(val)
+	case int32:
+		val := value.(int32)
+		return float32(val)
+	case int64:
+		val := value.(int64)
+		return float32(val)
+	case float32:
+		return value.(float32)
+	case float64:
+		val := value.(float64)
+		return float32(val)
+	default:
+		panic(fmt.Sprintf("The value is of an unknown type: %T\n", t))
+	}
+}
+
+func (jr *JSONArray) GetFloat64(index int32) float64 {
+	if index < 0 || index >= jr.Size() {
+		panic(fmt.Sprintf("The index is out of range: %d", index))
+	}
+	value := jr.jsonArray[index]
+	switch t := value.(type) {
+	case int:
+		val := value.(int)
+		return float64(val)
+	case int16:
+		val := value.(int16)
+		return float64(val)
+	case int32:
+		val := value.(int32)
+		return float64(val)
+	case int64:
+		val := value.(int64)
+		return float64(val)
+	case float32:
+		val := value.(float32)
+		return float64(val)
+	case float64:
+		return value.(float64)
+	default:
+		panic(fmt.Sprintf("The value is of an unknown type: %T\n", t))
+	}
+}
+
+func (jr *JSONArray) GetBool(index int32) bool {
+	if index < 0 || index >= jr.Size() {
+		panic(fmt.Sprintf("The index is out of range: %d", index))
+	}
+	value := jr.jsonArray[index]
+	switch t := value.(type) {
+	case bool:
+		val := value.(bool)
+		return val
+	default:
+		panic(fmt.Sprintf("The value is of an unknown type: %T\n", t))
+	}
 }
