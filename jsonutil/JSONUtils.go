@@ -7,6 +7,10 @@ import (
 func convertJSONObject2Map(res map[string]interface{}, js JSONObject) map[string]interface{} {
 	jsonMap := js.jsonMap
 	for key, value := range jsonMap {
+		if value == nil {
+			res[key] = nil
+			continue
+		}
 		ifaceType := reflect.ValueOf(value).Type()
 		if ifaceType == reflect.TypeOf(JSONObject{}) {
 			jm := make(map[string]interface{})
@@ -27,6 +31,10 @@ func convertJSONArray2Map(list []interface{}, array JSONArray) []interface{} {
 	}
 	for i := 0; i < len(array.jsonArray); i++ {
 		js := array.jsonArray[i]
+		if js == nil {
+			list = append(list, nil)
+			continue
+		}
 		ifaceType := reflect.ValueOf(js).Type()
 		if ifaceType == reflect.TypeOf(JSONObject{}) {
 			jm := make(map[string]interface{})
