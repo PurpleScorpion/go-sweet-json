@@ -6,6 +6,9 @@ import (
 
 func convertJSONObject2Map(res map[string]interface{}, js JSONObject) map[string]interface{} {
 	jsonMap := js.jsonMap
+	if jsonMap == nil {
+		return res
+	}
 	for key, value := range jsonMap {
 		if value == nil {
 			res[key] = nil
