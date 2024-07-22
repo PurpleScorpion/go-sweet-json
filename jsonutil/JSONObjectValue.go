@@ -208,10 +208,10 @@ func (js *JSONObject) GetJSONObject(key string) JSONObject {
 	}
 
 	// 如果不是结构体类型
-	if !isStruct(obj) {
-		// 抛出异常
-		panic("Cannot convert non object type to object type")
-	}
+	//if !isStruct(obj) {
+	//	// 抛出异常
+	//	panic("Cannot convert non object type to object type")
+	//}
 	jsonObj := NewJSONObject()
 	switch obj.(type) {
 	// 如果是JSONObject类型
