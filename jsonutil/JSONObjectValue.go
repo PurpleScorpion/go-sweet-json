@@ -28,6 +28,20 @@ func (js *JSONObject) GetString(key string) string {
 	case string:
 		val := value.(string)
 		return val
+	case int:
+		return fmt.Sprintf("%d", t)
+	case int8:
+		return fmt.Sprintf("%d", t)
+	case int16:
+		return fmt.Sprintf("%d", t)
+	case int32:
+		return fmt.Sprintf("%d", t)
+	case int64:
+		return fmt.Sprintf("%d", t)
+	case float32:
+		return fmt.Sprintf("%f", t)
+	case float64:
+		return fmt.Sprintf("%f", t)
 	default:
 		panic(fmt.Sprintf("The value is of an unknown type: %T\n", t))
 	}
@@ -40,17 +54,19 @@ func (js *JSONObject) GetInt(key string) int {
 	}
 	switch t := value.(type) {
 	case int:
-		val := value.(int)
-		return val
+		return t
+	case int8:
+		return int(t)
 	case int16:
-		val := value.(int16)
-		return int(val)
+		return int(t)
 	case int32:
-		val := value.(int32)
-		return int(val)
+		return int(t)
 	case int64:
-		val := value.(int64)
-		return int(val)
+		return int(t)
+	case float32:
+		return int(t)
+	case float64:
+		return int(t)
 	default:
 		panic(fmt.Sprintf("The value is of an unknown type: %T\n", t))
 	}
@@ -63,17 +79,19 @@ func (js *JSONObject) GetInt16(key string) int16 {
 	}
 	switch t := value.(type) {
 	case int:
-		val := value.(int)
-		return int16(val)
+		return int16(t)
+	case int8:
+		return int16(t)
 	case int16:
-		val := value.(int16)
-		return int16(val)
+		return t
 	case int32:
-		val := value.(int32)
-		return int16(val)
+		return int16(t)
 	case int64:
-		val := value.(int64)
-		return int16(val)
+		return int16(t)
+	case float32:
+		return int16(t)
+	case float64:
+		return int16(t)
 	default:
 		panic(fmt.Sprintf("The value is of an unknown type: %T\n", t))
 	}
@@ -86,17 +104,19 @@ func (js *JSONObject) GetInt32(key string) int32 {
 	}
 	switch t := value.(type) {
 	case int:
-		val := value.(int)
-		return int32(val)
+		return int32(t)
+	case int8:
+		return int32(t)
 	case int16:
-		val := value.(int16)
-		return int32(val)
+		return int32(t)
 	case int32:
-		val := value.(int32)
-		return int32(val)
+		return t
 	case int64:
-		val := value.(int64)
-		return int32(val)
+		return int32(t)
+	case float32:
+		return int32(t)
+	case float64:
+		return int32(t)
 	default:
 		panic(fmt.Sprintf("The value is of an unknown type: %T\n", t))
 	}
@@ -110,16 +130,19 @@ func (js *JSONObject) GetInt64(key string) int64 {
 
 	switch t := value.(type) {
 	case int:
-		val := value.(int)
-		return int64(val)
+		return int64(t)
+	case int8:
+		return int64(t)
 	case int16:
-		val := value.(int16)
-		return int64(val)
+		return int64(t)
 	case int32:
-		val := value.(int32)
-		return int64(val)
+		return int64(t)
 	case int64:
-		return value.(int64)
+		return t
+	case float32:
+		return int64(t)
+	case float64:
+		return int64(t)
 	default:
 		panic(fmt.Sprintf("The value is of an unknown type: %T\n", t))
 	}
@@ -132,22 +155,19 @@ func (js *JSONObject) GetFloat32(key string) float32 {
 	}
 	switch t := value.(type) {
 	case int:
-		val := value.(int)
-		return float32(val)
+		return float32(t)
+	case int8:
+		return float32(t)
 	case int16:
-		val := value.(int16)
-		return float32(val)
+		return float32(t)
 	case int32:
-		val := value.(int32)
-		return float32(val)
+		return float32(t)
 	case int64:
-		val := value.(int64)
-		return float32(val)
+		return float32(t)
 	case float32:
-		return value.(float32)
+		return t
 	case float64:
-		val := value.(float64)
-		return float32(val)
+		return float32(t)
 	default:
 		panic(fmt.Sprintf("The value is of an unknown type: %T\n", t))
 	}
@@ -160,22 +180,19 @@ func (js *JSONObject) GetFloat64(key string) float64 {
 	}
 	switch t := value.(type) {
 	case int:
-		val := value.(int)
-		return float64(val)
+		return float64(t)
+	case int8:
+		return float64(t)
 	case int16:
-		val := value.(int16)
-		return float64(val)
+		return float64(t)
 	case int32:
-		val := value.(int32)
-		return float64(val)
+		return float64(t)
 	case int64:
-		val := value.(int64)
-		return float64(val)
+		return float64(t)
 	case float32:
-		val := value.(float32)
-		return float64(val)
+		return float64(t)
 	case float64:
-		return value.(float64)
+		return t
 	default:
 		panic(fmt.Sprintf("The value is of an unknown type: %T\n", t))
 	}
