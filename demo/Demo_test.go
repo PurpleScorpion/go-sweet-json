@@ -3,9 +3,14 @@ package demo
 import (
 	"fmt"
 	"github.com/PurpleScorpion/go-sweet-json/jsonutil"
+	"testing"
 )
 
-type Demo struct {
+func TestDemo1(t *testing.T) {
+	jsonStr := `{"name":"Jaina","age":18,"birthday":"2024-01-01 00:12:13"}`
+	myMap := make(map[string]interface{})
+	jsonutil.ParseEntity(jsonStr, &myMap)
+	fmt.Println(myMap)
 }
 
 // 获取json对象设置值

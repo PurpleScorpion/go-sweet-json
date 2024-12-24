@@ -8,11 +8,11 @@ type JSONArray struct {
 	jsonArray []interface{}
 }
 
-func (jr *JSONArray) Size() int32 {
+func (jr *JSONArray) Size() int {
 	if jr.jsonArray == nil {
 		return 0
 	}
-	return int32(len(jr.jsonArray))
+	return len(jr.jsonArray)
 }
 
 func (jr *JSONArray) FluentPut(value interface{}) *JSONArray {

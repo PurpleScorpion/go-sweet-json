@@ -55,6 +55,18 @@
   组合使用方式请看demo包下的Demo.go文件
 ```
 
+#### ParseEntity
+```text 
+  // 解析JSON字符串为实体类或map
+  jsonStr := `{"name":"Jaina","age":18,"birthday":"2024-01-01 00:12:13"}`
+  myMap := make(map[string]interface{})
+  jsonutil.ParseEntity(jsonStr, &myMap)
+  fmt.Println(myMap)
+  // 若想输出为可观测方式 , 请使用keqing工具类 https://github.com/PurpleScorpion/go-sweet-keqing
+  // str := keqing.ToString(myMap)
+  // fmt.Println(str)
+```
+
 #### ParseObject
 ```text 
   // 解析JSON字符串为JSONObject

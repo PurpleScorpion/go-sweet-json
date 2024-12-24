@@ -275,7 +275,7 @@ func (js *JSONObject) GetJSONArray(key string) JSONArray {
 	return arr
 }
 
-func (jr *JSONArray) GetJSONObject(index int32) JSONObject {
+func (jr *JSONArray) GetJSONObject(index int) JSONObject {
 	if index < 0 || index >= jr.Size() {
 		panic(fmt.Sprintf("The index is out of range: %d", index))
 	}
@@ -301,7 +301,7 @@ func (jr *JSONArray) GetJSONObject(index int32) JSONObject {
 	return jsonObj
 }
 
-func (jr *JSONArray) GetJSONArray(index int32) JSONArray {
+func (jr *JSONArray) GetJSONArray(index int) JSONArray {
 	if index < 0 || index >= jr.Size() {
 		panic(fmt.Sprintf("The index is out of range: %d", index))
 	}
@@ -325,7 +325,7 @@ func (jr *JSONArray) GetJSONArray(index int32) JSONArray {
 	return arr
 }
 
-func (jr *JSONArray) GetTime(index int32) time.Time {
+func (jr *JSONArray) GetTime(index int) time.Time {
 	if index < 0 || index >= jr.Size() {
 		panic(fmt.Sprintf("The index is out of range: %d", index))
 	}
@@ -339,7 +339,7 @@ func (jr *JSONArray) GetTime(index int32) time.Time {
 	}
 }
 
-func (jr *JSONArray) GetString(index int32) string {
+func (jr *JSONArray) GetString(index int) string {
 	if index < 0 || index >= jr.Size() {
 		panic(fmt.Sprintf("The index is out of range: %d", index))
 	}
@@ -353,7 +353,7 @@ func (jr *JSONArray) GetString(index int32) string {
 	}
 }
 
-func (jr *JSONArray) GetInt(index int32) int {
+func (jr *JSONArray) GetInt(index int) int {
 	if index < 0 || index >= jr.Size() {
 		panic(fmt.Sprintf("The index is out of range: %d", index))
 	}
@@ -376,7 +376,7 @@ func (jr *JSONArray) GetInt(index int32) int {
 	}
 }
 
-func (jr *JSONArray) GetInt16(index int32) int16 {
+func (jr *JSONArray) GetInt16(index int) int16 {
 	if index < 0 || index >= jr.Size() {
 		panic(fmt.Sprintf("The index is out of range: %d", index))
 	}
@@ -399,7 +399,7 @@ func (jr *JSONArray) GetInt16(index int32) int16 {
 	}
 }
 
-func (jr *JSONArray) GetInt32(index int32) int32 {
+func (jr *JSONArray) GetInt32(index int) int32 {
 	if index < 0 || index >= jr.Size() {
 		panic(fmt.Sprintf("The index is out of range: %d", index))
 	}
@@ -422,7 +422,7 @@ func (jr *JSONArray) GetInt32(index int32) int32 {
 	}
 }
 
-func (jr *JSONArray) GetInt64(index int32) int64 {
+func (jr *JSONArray) GetInt64(index int) int64 {
 	if index < 0 || index >= jr.Size() {
 		panic(fmt.Sprintf("The index is out of range: %d", index))
 	}
@@ -445,7 +445,7 @@ func (jr *JSONArray) GetInt64(index int32) int64 {
 	}
 }
 
-func (jr *JSONArray) GetFloat32(index int32) float32 {
+func (jr *JSONArray) GetFloat32(index int) float32 {
 	if index < 0 || index >= jr.Size() {
 		panic(fmt.Sprintf("The index is out of range: %d", index))
 	}
@@ -473,7 +473,7 @@ func (jr *JSONArray) GetFloat32(index int32) float32 {
 	}
 }
 
-func (jr *JSONArray) GetFloat64(index int32) float64 {
+func (jr *JSONArray) GetFloat64(index int) float64 {
 	if index < 0 || index >= jr.Size() {
 		panic(fmt.Sprintf("The index is out of range: %d", index))
 	}
@@ -501,7 +501,7 @@ func (jr *JSONArray) GetFloat64(index int32) float64 {
 	}
 }
 
-func (jr *JSONArray) GetBool(index int32) bool {
+func (jr *JSONArray) GetBool(index int) bool {
 	if index < 0 || index >= jr.Size() {
 		panic(fmt.Sprintf("The index is out of range: %d", index))
 	}

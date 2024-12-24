@@ -1,8 +1,13 @@
 package jsonutil
 
 import (
+	"encoding/json"
 	"reflect"
 )
+
+func ParseEntity(jsonStr string, v any) {
+	json.Unmarshal([]byte(jsonStr), v)
+}
 
 func convertJSONObject2Map(res map[string]interface{}, js JSONObject) map[string]interface{} {
 	jsonMap := js.jsonMap
