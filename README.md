@@ -130,15 +130,15 @@ JSONObject
 
 
 JSONArray
-    GetTime(index int32)
-    GetString(index int32)
-    GetInt(index int32)
-    GetInt16(index int32)
-    GetInt32(index int32)
-    GetInt64(index int32)
-    GetFloat32(index int32)
-    GetFloat64(index int32)
-    GetBool(index int32)
+    GetTime(index int)
+    GetString(index int)
+    GetInt(index int)
+    GetInt16(index int)
+    GetInt32(index int)
+    GetInt64(index int)
+    GetFloat32(index int)
+    GetFloat64(index int)
+    GetBool(index int)
 注意 : 当索引大于JSONArray的长度时则抛出角标越界异常
     
     其中 
