@@ -55,6 +55,14 @@
   组合使用方式请看demo包下的Demo.go文件
 ```
 
+#### ToJsonEntityString
+```text
+    // 获取对象的JSON字符串
+    str := jsonutil.ToJsonEntityString(obj)
+    fmt.Println(str)
+    // 具体使用方式请看demo包下的Demo.go文件
+```
+
 #### ParseEntity
 ```text 
   // 解析JSON字符串为实体类或map
@@ -140,6 +148,9 @@ JSONArray
     GetFloat64(index int)
     GetBool(index int)
 注意 : 当索引大于JSONArray的长度时则抛出角标越界异常
+    
+其他函数
+    
     
     其中 
     在 Go 语言中，time.Time 类型的空值通常表示一个未设置或无效的时间值。它被称作零值（zero value）。当你声明一个 time.Time 类型的变量但没有初始化时，它的默认值就是这个空值。

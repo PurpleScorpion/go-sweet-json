@@ -6,6 +6,45 @@ import (
 	"testing"
 )
 
+type animal struct {
+	Jinmao dog
+	Dogs   []dog
+}
+
+type dog struct {
+	Name string
+	Age  int
+}
+
+func TestDemo27(t *testing.T) {
+	an := &animal{
+		Jinmao: dog{
+			Name: "jinmao",
+			Age:  1,
+		},
+		Dogs: []dog{
+			{
+				Name: "dog1",
+				Age:  2,
+			},
+			{
+				Name: "dog2",
+				Age:  3,
+			},
+		},
+	}
+	jsonString := jsonutil.ToJsonString(an)
+	fmt.Println(jsonString)
+	fmt.Println("---------------------------------------------")
+	aa := animal{}
+	if err := jsonutil.ParseJson2Object(jsonString, &aa); err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println(jsonutil.ToJsonString(aa))
+	}
+	fmt.Println("*******************************************")
+}
+
 func TestDemo1(t *testing.T) {
 	jsonStr := `{"name":"Jaina","age":18,"birthday":"2024-01-01 00:12:13"}`
 	myMap := make(map[string]interface{})

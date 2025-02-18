@@ -5,8 +5,20 @@ import (
 	"reflect"
 )
 
-func ParseEntity(jsonStr string, v any) {
-	json.Unmarshal([]byte(jsonStr), v)
+func ParseEntity(jsonStr string, v any) error {
+	err := json.Unmarshal([]byte(jsonStr), v)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func ToJsonEntityString(data any) string {
+	jsonBytes, err := json.Marshal(data)
+	if err != nil {
+		return ""
+	}
+	return string(jsonBytes)
 }
 
 func convertJSONObject2Map(res map[string]interface{}, js JSONObject) map[string]interface{} {
